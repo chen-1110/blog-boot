@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chen.blogboot.mapper.ArticleMapper">
+
+
+    <select id="getArticles" parameterType="int" resultType="com.chen.blogboot.entity.Article">
+        select *
+        from `article`
+        limit #{head},#{tail}
+    </select>
+    <select id="getArticleCount" resultType="java.lang.Integer">
+        select count(*)
+        from `article`
+    </select>
+    <select id="getArchives" resultType="com.chen.blogboot.vo.ArchiveVo">
+        select `article_title`,`create_time`
+        from `article`
+         limit #{head},#{tail}
+    </select>
+    <select id="getCategories" resultType="com.chen.blogboot.vo.CategoryVo">
+        select `category_name`,count(*) as `article_count`
+        from `article`
+        group by `category_name`
+    </select>
+</mapper>

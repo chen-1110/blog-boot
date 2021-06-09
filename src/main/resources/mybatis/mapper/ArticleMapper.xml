@@ -5,8 +5,8 @@
 <mapper namespace="com.chen.blogboot.mapper.ArticleMapper">
 
 
-    <select id="getArticles" parameterType="int" resultType="com.chen.blogboot.entity.Article">
-        select *
+    <select id="getArticles" parameterType="int" resultType="com.chen.blogboot.dto.ArticlesDto">
+        select `id`,`article_cover`,`article_title`,`is_top`,`create_time`,`category_name`,`article_content`,`category_id`
         from `article`
         limit #{head},#{tail}
     </select>
@@ -14,14 +14,43 @@
         select count(*)
         from `article`
     </select>
-    <select id="getArchives" resultType="com.chen.blogboot.vo.ArchiveVo">
-        select `article_title`,`create_time`
+    <select id="getArchives" resultType="com.chen.blogboot.dto.ArchiveDto">
+        select `article_title`,`create_time`,`id`
         from `article`
          limit #{head},#{tail}
     </select>
-    <select id="getCategories" resultType="com.chen.blogboot.vo.CategoryVo">
-        select `category_name`,count(*) as `article_count`
+    <select id="getCategories" resultType="com.chen.blogboot.dto.CategoriesDto">
+        select `category_name`,count(*) as `article_count`,`category_id` as `id`
         from `article`
         group by `category_name`
     </select>
+    <select id="getArticle" resultType="com.chen.blogboot.entity.Article">
+        select *
+        from `article`
+        where id=#{id}
+    </select>
+    <select id="getOtherArticle" resultType="com.chen.blogboot.entity.OtherArticle">
+        select `id`,`article_cover`,`article_title`
+        from `article`
+        where id=#{id}
+    </select>
+    <select id="getNewArticles" resultType="com.chen.blogboot.dto.NewArticleDto">
+        select `id`,`article_cover`,`create_time`,`article_title`,`view_count` as `views_count`
+        from `article`
+        order by `id` desc
+        limit 5
+    </select>
+    <select id="getCategory" resultType="com.chen.blogboot.entity.Category">
+        select `article_cover`,`article_title`,`create_time`,`category_name`,`category_id`,`id`
+        from `article`
+        where `category_id`=#{id}
+        limit #{head},#{tail}
+    </select>
+    <select id="getCategoryCount" resultType="java.lang.Integer">
+        select count(*)
+        from `article`
+        where `category_id`=#{id}
+    </select>
+
+
 </mapper>

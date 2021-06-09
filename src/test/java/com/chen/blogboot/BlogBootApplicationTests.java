@@ -17,8 +17,10 @@ class BlogBootApplicationTests {
     private AboutMapper aboutMapper;
     @Test
     public void test1(){
-        System.out.println(aboutMapper.getAboutMessage());
-
+        System.out.println(articleMapper.getNewArticles());
+        String timeMillis = System.currentTimeMillis() + "";
+        String randomNum = timeMillis.substring(timeMillis.length() - 6);
+        System.out.println(randomNum);
     }
 
     @Test

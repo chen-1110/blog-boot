@@ -1,6 +1,5 @@
 package com.chen.blogboot.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,18 +8,11 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Article {
-    private String id;
+public class Category {
     private String articleCover;
     private String articleTitle;
-    private String isTop;
-    private Date createDate;
-    private Date updateDate;
+    private Date createTime;
     private String categoryName;
-    private String articleContent;
     private String categoryId;
-    private String viewCount;
-    private String likeCount;
-    private String lastArticleId;
-    private String nextArticleId;
+    private String id;
 }

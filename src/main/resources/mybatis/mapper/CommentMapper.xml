@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chen.blogboot.mapper.CommentMapper">
+    <insert id="postComment">
+        insert into
+        `comment`(`id`,`avatar`,`website`,`nickname`,`create_time`,`comment_content`,`reply_id`,`user_id`,`article_id`,`reply_Count`,`like_count`)
+        values (#{comment}.id,#{comment}.avatar,#{comment}.webSite,#{comment}.nickname,#{comment}.createTime,#{comment}.commentContent,#{comment}.replyId,#{comment}.userId,#{comment}.articleId,#{comment}.replyCount,#{comment}.likeCount)
+    </insert>
+
+    <select id="getCommentByArticleId" resultType="com.chen.blogboot.entity.Comment">
+        select *
+        from `comment`
+        where `article_id`=#{articleId}
+        limit #{head},#{tail}
+    </select>
+    <select id="getCommentByReplyId" resultType="com.chen.blogboot.entity.Comment">
+        select *
+        from `comment`
+        where `article_id`=#{replyId}
+    </select>
+    <select id="getCommentCount" resultType="java.lang.Integer">
+        select count(*)
+        from `comment`
+        where `article_id`=#{articleId}
+    </select>
+</mapper>

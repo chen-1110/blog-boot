@@ -1,4 +1,4 @@
-package com.chen.blogboot.vo;
+package com.chen.blogboot.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RealCategoryVo {
+public class RealCategoryDto {
     private int count;
     private List<Object> recordList;
 }

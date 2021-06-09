@@ -1,26 +1,26 @@
-package com.chen.blogboot.entity;
+package com.chen.blogboot.dto;
 
 
+import com.chen.blogboot.entity.OtherArticle;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Article {
-    private String id;
+public class ArticleDto {
     private String articleCover;
     private String articleTitle;
-    private String isTop;
     private Date createDate;
     private Date updateDate;
     private String categoryName;
     private String articleContent;
     private String categoryId;
-    private String viewCount;
+    private String viewsCount;
     private String likeCount;
-    private String lastArticleId;
-    private String nextArticleId;
+    private OtherArticle lastArticle;
+    private OtherArticle nextArticle;
 }

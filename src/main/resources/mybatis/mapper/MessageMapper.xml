@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chen.blogboot.mapper.MessageMapper">
+    <insert id="postMessage">
+        insert into `message`(`content`) values (#{message})
+    </insert>
+
+
+    <select id="getMessage" resultType="com.chen.blogboot.entity.Message">
+        select `content` as `message_content`
+        from `message`
+    </select>
+</mapper>

@@ -1,7 +1,7 @@
 package com.chen.blogboot.controller;
 
 import com.chen.blogboot.common.lang.Result;
-import com.chen.blogboot.entity.Article;
+import com.chen.blogboot.dto.ArticlesDto;
 import com.chen.blogboot.entity.BlogInfo;
 import com.chen.blogboot.service.ArticleService;
 import com.chen.blogboot.service.BlogInfoService;
@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class HomeController {
@@ -34,11 +33,11 @@ public class HomeController {
     @GetMapping("/articles")
     @ResponseBody
     public Result getArticles(@RequestParam("current") String current){
-        Object result=articleService.getArticles(current);
+        Object result= articleService.getArticles(current);
         if (result!=null){
-            result=Result.successful((List<Article>)result);
+            result=Result.successful((List<ArticlesDto>)result);
         }else {
-            result=Result.fail("错误");
+            result=Result.successful(new ArrayList<ArticlesDto>());
         }
         return (Result) result;
     }

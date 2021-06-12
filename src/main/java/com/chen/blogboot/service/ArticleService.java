@@ -43,4 +43,10 @@ public interface ArticleService {
      */
     public CategoryDto getCategory(String id, String current);
 
+    /**
+     * 增加一篇article的点赞數
+     * @param articleId
+     */
+    public void addArticleLike(String articleId);
+
 }

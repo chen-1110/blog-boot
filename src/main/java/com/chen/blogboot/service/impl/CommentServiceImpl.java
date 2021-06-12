@@ -45,7 +45,7 @@ public class CommentServiceImpl implements CommentService {
             commentDto.setArticleId(comment.getArticleId());
             commentDto.setUserId(comment.getUserId());
             commentDto.setReplyCount(comment.getReplyCount());
-            commentDto.setReplyDtoList(commentMapper.getCommentByReplyId(comment.getReplyId()));
+            commentDto.setReplyDTOList(commentMapper.getCommentByReplyId(comment.getId()));
             commentDtos.add(commentDto);
         }
         realCommentDto.setRecordList(commentDtos);
@@ -54,13 +54,23 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public void postComment(Comment comment) {
-        int id = commentMapper.getCommentCount(comment.getArticleId());
-        comment.setId(String.valueOf(id));
-        comment.setAvatar("");
-        comment.setCreateTime(new Date());
-        comment.setReplyId("0");
-        comment.setReplyCount("0");
-        comment.setLikeCount("0");
-        commentMapper.postComment(comment);
+        int id = commentMapper.getTotalCount(comment.getArticleId())+1;
+
+        String replyId=null;
+        if(comment.getReplyId()==null){
+            replyId="0";
+        }else if (comment.getReplyId().equals("0")){
+            replyId=comment.getParentId();
+        }else {
+            replyId=comment.getReplyId();
+        }
+        String userId=comment.getUserId();
+        String nickname="用户"+userId;
+        commentMapper.postComment(String.valueOf(id),"","",nickname,new Date(),comment.getCommentContent(),replyId,userId,comment.getArticleId(),0,0);
+    }
+
+    @Override
+    public void postCommentLike(String id) {
+        commentMapper.postCommentLike(id);
     }
 }

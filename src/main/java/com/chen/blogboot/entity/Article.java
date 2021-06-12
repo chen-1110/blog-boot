@@ -19,8 +19,8 @@ public class Article {
     private String categoryName;
     private String articleContent;
     private String categoryId;
-    private String viewCount;
-    private String likeCount;
+    private int viewCount;
+    private int likeCount;
     private String lastArticleId;
     private String nextArticleId;
 }

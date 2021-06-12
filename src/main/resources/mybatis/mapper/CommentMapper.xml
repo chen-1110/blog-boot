@@ -6,21 +6,31 @@
     <insert id="postComment">
         insert into
         `comment`(`id`,`avatar`,`website`,`nickname`,`create_time`,`comment_content`,`reply_id`,`user_id`,`article_id`,`reply_Count`,`like_count`)
-        values (#{comment}.id,#{comment}.avatar,#{comment}.webSite,#{comment}.nickname,#{comment}.createTime,#{comment}.commentContent,#{comment}.replyId,#{comment}.userId,#{comment}.articleId,#{comment}.replyCount,#{comment}.likeCount)
+        values (#{id},#{avatar},#{webSite},#{nickname},#{createTime},#{commentContent},#{replyId},#{userId},#{articleId},#{replyCount},#{likeCount})
     </insert>
+    <update id="postCommentLike">
+        update `comment`
+         set `like_count` = `like_count`+1
+         where `id`=#{id};
+    </update>
 
     <select id="getCommentByArticleId" resultType="com.chen.blogboot.entity.Comment">
         select *
         from `comment`
-        where `article_id`=#{articleId}
+        where `article_id`=#{articleId} and `reply_id`='0'
         limit #{head},#{tail}
     </select>
     <select id="getCommentByReplyId" resultType="com.chen.blogboot.entity.Comment">
         select *
         from `comment`
-        where `article_id`=#{replyId}
+        where `reply_id`=#{id}
     </select>
     <select id="getCommentCount" resultType="java.lang.Integer">
+        select count(*)
+        from `comment`
+        where `article_id`=#{articleId} and `reply_id`='0'
+    </select>
+    <select id="getTotalCount" resultType="java.lang.Integer">
         select count(*)
         from `comment`
         where `article_id`=#{articleId}

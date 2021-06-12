@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 
 @Controller
 public class CommentController {
@@ -29,6 +30,13 @@ public class CommentController {
         String cookieView = CookieUtils.getCookie(httpServletRequest, httpServletResponse);
         comment.setUserId(cookieView);
         commentService.postComment(comment);
+        return Result.successful(null);
+    }
+    @ResponseBody
+    @PostMapping("/comments/like")
+    public Result postComment(@RequestBody HashMap<String,Object> map){
+        String commentId = (String) map.get("commentId");
+        commentService.postCommentLike(commentId);
         return Result.successful(null);
     }
 }

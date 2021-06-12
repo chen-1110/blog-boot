@@ -60,6 +60,7 @@ public class ArticleServiceImpl implements ArticleService {
     public ArticleDto getArticle(String id) {
         Article article = articleMapper.getArticle(id);
         ArticleDto articleDto = new ArticleDto();
+        articleDto.setId(article.getId());
         articleDto.setArticleTitle(article.getArticleTitle());
         articleDto.setCreateDate(article.getCreateDate());
         articleDto.setUpdateDate(article.getUpdateDate());
@@ -108,6 +109,11 @@ public class ArticleServiceImpl implements ArticleService {
         }
         categoryDto.setArticlePreviewDTOList(category);
         return categoryDto;
+    }
+
+    @Override
+    public void addArticleLike(String articleId) {
+        articleMapper.addArticleLike(articleId);
     }
 
 

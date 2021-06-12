@@ -1,5 +1,6 @@
 package com.chen.blogboot;
 
+import com.chen.blogboot.entity.Comment;
 import com.chen.blogboot.mapper.AboutMapper;
 import com.chen.blogboot.mapper.ArticleMapper;
 import com.chen.blogboot.service.ArticleService;
@@ -21,6 +22,7 @@ class BlogBootApplicationTests {
         String timeMillis = System.currentTimeMillis() + "";
         String randomNum = timeMillis.substring(timeMillis.length() - 6);
         System.out.println(randomNum);
+        System.out.println(new Comment().getReplyId());
     }
 
     @Test

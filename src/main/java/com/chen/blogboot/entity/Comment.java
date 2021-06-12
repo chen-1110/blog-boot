@@ -16,9 +16,10 @@ public class Comment {
     private String nickname;
     private Date createTime;
     private String commentContent;
+    private String parentId;
     private String replyId;
     private String userId;
     private String articleId;
-    private String replyCount;
-    private String likeCount;
+    private int replyCount;
+    private int likeCount;
 }

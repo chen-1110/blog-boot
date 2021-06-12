@@ -12,6 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ArticleDto {
+    private String id;
     private String articleCover;
     private String articleTitle;
     private Date createDate;
@@ -19,8 +20,8 @@ public class ArticleDto {
     private String categoryName;
     private String articleContent;
     private String categoryId;
-    private String viewsCount;
-    private String likeCount;
+    private int viewsCount;
+    private int likeCount;
     private OtherArticle lastArticle;
     private OtherArticle nextArticle;
 }

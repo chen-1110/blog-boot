@@ -73,4 +73,6 @@ public interface ArticleMapper {
      */
     public int getCategoryCount(String id);
 
+    public void addArticleLike(String articleId);
+
 }

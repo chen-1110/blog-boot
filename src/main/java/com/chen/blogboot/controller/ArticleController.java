@@ -6,11 +6,11 @@ import com.chen.blogboot.dto.ArticleDto;
 import com.chen.blogboot.dto.NewArticleDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ArticleController {
@@ -35,5 +35,13 @@ public class ArticleController {
         }else {
             return Result.fail("错误");
         }
+    }
+
+    @ResponseBody
+    @PostMapping("/articles/like")
+    public Result postLike(@RequestBody HashMap<String,Object> param){
+        String articleId = (String) param.get("articleId");
+        articleService.addArticleLike(articleId);
+        return Result.successful(null);
     }
 }

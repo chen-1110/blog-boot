@@ -17,11 +17,12 @@ public class CommentDto {
     private String webSite;
     private String nickname;
     private Date createTime;
-    private String likeCount;
+    private int likeCount;
     private String commentContent;
+    private String parentId;
     private String replyId;
     private String userId;
     private String articleId;
-    private String replyCount;
-    private List<Comment> replyDtoList;
+    private int replyCount;
+    private List<Comment> replyDTOList;
 }

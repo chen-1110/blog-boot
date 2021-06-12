@@ -17,4 +17,10 @@ public interface CommentService {
      * @param comment
      */
     public void postComment(Comment comment);
+
+    /**
+     * 通过指定id号增加点赞数
+     * @param id
+     */
+    public void postCommentLike(String id);
 }

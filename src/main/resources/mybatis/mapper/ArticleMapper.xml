@@ -30,9 +30,9 @@
         group by `category_name`
     </select>
     <select id="getArticle" resultType="com.chen.blogboot.entity.Article">
-        select *
+        select `id`,`article_cover`,`article_title`,`is_top`,`create_time` as `create_date`,`update_time` as `update_date`,`category_name`,`article_content`,`category_id`,`view_count`,`like_count`,`last_article_id`,`next_article_id`
         from `article`
-        where id=#{id}
+        where `id`=#{id}
     </select>
     <select id="getOtherArticle" resultType="com.chen.blogboot.entity.OtherArticle">
         select `id`,`article_cover`,`article_title`

@@ -1,7 +1,5 @@
 package com.chen.blogboot.utils;
 
-import com.sun.deploy.net.HttpResponse;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

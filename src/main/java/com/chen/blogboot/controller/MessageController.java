@@ -3,14 +3,9 @@ package com.chen.blogboot.controller;
 import com.chen.blogboot.common.lang.Result;
 import com.chen.blogboot.entity.Message;
 import com.chen.blogboot.mapper.MessageMapper;
-import com.sun.deploy.net.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

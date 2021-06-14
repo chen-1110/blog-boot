@@ -7,6 +7,6 @@
 
     <select id="getAboutMessage" resultType="java.lang.String">
         select `about_content`
-        from `about_message`
+        from `about_message`;
     </select>
 </mapper>

@@ -54,8 +54,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public void postComment(Comment comment) {
-        int id = commentMapper.getTotalCount(comment.getArticleId())+1;
-
+        int id = commentMapper.getTotalCount()+1;
         String replyId=null;
         if(comment.getReplyId()==null){
             replyId="0";

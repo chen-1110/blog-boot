@@ -40,10 +40,9 @@ public interface CommentMapper {
 
     /**
      * 获取comment表里面的数据的总数量
-     * @param articleId
      * @return
      */
-    public int getTotalCount(String articleId);
+    public int getTotalCount();
 
     /**
      * 通过id号增加点赞数

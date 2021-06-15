@@ -33,6 +33,5 @@
     <select id="getTotalCount" resultType="java.lang.Integer">
         select count(*)
         from `comment`
-        where `article_id`=#{articleId}
     </select>
 </mapper>
